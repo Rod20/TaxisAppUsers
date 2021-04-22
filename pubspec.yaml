@@ -17,15 +17,15 @@ dependencies:
   flutter_facebook_login: ^1.1.1
   shared_preferences: ^0.5.3+4
   google_sign_in: "^4.5.1"
-  another_flushbar: ^1.10.11
+  another_flushbar: ^1.10.17
   # geolocator: ^6.1.4
-  google_maps_flutter: ^1.2.0
+  google_maps_flutter: ^2.0.2
   firebase_core: "0.7.0"
   firebase_auth: "^0.20.1"
   firebase_database: "^6.0.0"
   cloud_firestore: "^0.16.0+1"
   location: ^3.0.0
-  provider: ^4.3.3
+  provider: ^5.0.0
   custom_splash: ^0.0.2
 
 dev_dependencies:
@@ -50,6 +50,7 @@ flutter:
     - assets/icon/
     - assets/images/
     - assets/
+    - assets/images/icons/
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a

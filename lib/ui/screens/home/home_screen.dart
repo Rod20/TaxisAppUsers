@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:another_flushbar/flushbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +12,6 @@ import 'package:servisurusers/core/api/api_location.dart';
 import 'package:servisurusers/core/providers/taxi_provider.dart';
 import 'package:servisurusers/core/utils/user_preferences.dart';
 import 'package:servisurusers/ui/resources/app_colors.dart';
-import 'package:servisurusers/ui/screens/home/map_send_location.dart';
-import 'package:servisurusers/ui/widgets/simple_input.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -45,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     taxiProvider = Provider.of<TaxiProvider>(context,listen: false);
     apiFirebase.taxisConsult(taxiProvider);
-    // getUbication();
+    getUbication();
     cargarMarker();
   }
 
@@ -109,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
   cargarMarker()async{
     markerBitMap = await BitmapDescriptor.fromAssetImage(
         ImageConfiguration(
-            devicePixelRatio: 2.5),'src/icons/carTop.png');
+            devicePixelRatio: 2.5),'assets/images/icons/carTop.png');
   }
 
   @override

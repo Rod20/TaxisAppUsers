@@ -105,6 +105,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "525371663874-kdi4nipecfe8nc4uva3qqfkcj0cd9qk7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taxiservice.servisurusers",
+            "certificate_hash": "e410abb3714928e4ce3b26a901be6a8e296ff7a4"
+          }
+        },
+        {
+          "client_id": "525371663874-m0co385lohn6819q9gs7qgsno5do9jgd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taxiservice.servisurusers",
+            "certificate_hash": "7b04bd6dfe7e37beb8862e8c954fee540dc7a63e"
+          }
+        },
+        {
           "client_id": "525371663874-rtikkasekr4lf8j6m5dgsvnju9adl9tp.apps.googleusercontent.com",
           "client_type": 3
         }
