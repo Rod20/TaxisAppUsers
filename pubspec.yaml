@@ -18,7 +18,7 @@ dependencies:
   shared_preferences: ^0.5.3+4
   google_sign_in: "^4.5.1"
   another_flushbar: ^1.10.17
-  # geolocator: ^6.1.4
+  geolocator: ^6.1.7
   google_maps_flutter: ^2.0.2
   firebase_core: "0.7.0"
   firebase_auth: "^0.20.1"
@@ -27,7 +27,8 @@ dependencies:
   location: ^3.0.0
   provider: ^5.0.0
   custom_splash: ^0.0.2
-
+  geocoding: ^1.0.5
+  flutter_polyline_points: ^0.2.4
 dev_dependencies:
   flutter_test:
     sdk: flutter

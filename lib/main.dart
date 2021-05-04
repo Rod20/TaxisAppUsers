@@ -6,10 +6,11 @@ import 'package:servisurusers/core/utils/user_preferences.dart';
 import 'package:servisurusers/ui/screens/auth/auth_screen.dart';
 import 'package:servisurusers/ui/screens/splashScreen/splash_screen.dart';
 
-void main(){
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = UserPreferences();
   prefs.initPreferences();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

@@ -12,6 +12,7 @@ import 'package:servisurusers/core/api/api_location.dart';
 import 'package:servisurusers/core/providers/taxi_provider.dart';
 import 'package:servisurusers/core/utils/user_preferences.dart';
 import 'package:servisurusers/ui/resources/app_colors.dart';
+import 'package:servisurusers/ui/screens/requestTaxi/request_taxi.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -65,38 +66,27 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         elevation: 0,
         backgroundColor: lightPrimary,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(100),
+              child: Image.network(
+                prefs.userPhotoUrl,
+                width: 40,
+                height: 40,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ],
       ),
       body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            //mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: Image.network(
-                  prefs.userPhotoUrl,
-                  width: 50,
-                  height: 50,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              SizedBox(height: 15,),
-              Text(prefs.userName,
-                style: TextStyle(fontSize: 18,color: Colors.blueGrey,fontWeight: FontWeight.w500),
-              ),
-              SizedBox(height: 25,),
-              taxisMaps(),
-              Divider(),
-
-              CupertinoButton(
-                  child: Text("Pedir Taxi"),
-                  color: extraLightPrimary,
-                  onPressed: (){
-
-                  }
-              ),
-            ],
-          ),
+        child: Column(
+          //mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(child: taxisMaps()),
+          ],
         ),
       ),
     );
@@ -200,35 +190,55 @@ class _HomeScreenState extends State<HomeScreen> {
   Set<Marker> _markers = {};
 
   Widget taxisMaps() {
-    return Container(
-      height: MediaQuery.of(context).size.height / 2,
-      color: Colors.grey[50],
-      child: GoogleMap(
-        mapType: MapType.normal,
-        initialCameraPosition: positionMap,
-        markers: _markers??{},
-        myLocationEnabled: true,
-        trafficEnabled: false,
-        indoorViewEnabled: false,
-        myLocationButtonEnabled: true,
-        minMaxZoomPreference: MinMaxZoomPreference(12, 20.5),
-        rotateGesturesEnabled: false,
-        scrollGesturesEnabled: true,
-        tiltGesturesEnabled: false,
-        onMapCreated: (controller) {
-          // _controller.complete(controller);
-          mapController = controller;
-          try {
-            rootBundle.loadString('assets/map_style.txt').then((string) {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Container(
+          color: Colors.grey[50],
+          child: GoogleMap(
+            mapType: MapType.normal,
+            initialCameraPosition: positionMap,
+            markers: _markers??{},
+            myLocationEnabled: true,
+            trafficEnabled: false,
+            indoorViewEnabled: false,
+            myLocationButtonEnabled: true,
+            minMaxZoomPreference: MinMaxZoomPreference(12, 20.5),
+            rotateGesturesEnabled: false,
+            scrollGesturesEnabled: true,
+            tiltGesturesEnabled: false,
+            onMapCreated: (controller) {
+              // _controller.complete(controller);
+              mapController = controller;
               try {
-                mapController.setMapStyle(string);
+                rootBundle.loadString('assets/map_style.txt').then((string) {
+                  try {
+                    mapController.setMapStyle(string);
+                  } catch (e) {
+                  }
+                });
               } catch (e) {
               }
-            });
-          } catch (e) {
-          }
-        },
-      ),
+            },
+          ),
+        ),
+        Positioned(
+          bottom: 0,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CupertinoButton(
+                child: Text("Pedir Taxi"),
+                color: extraLightPrimary,
+                onPressed: (){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (BuildContext context) => RequestTaxi())
+                  );
+                }
+            ),
+          ),
+        )
+      ],
     );
   }
 }
